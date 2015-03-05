@@ -64,7 +64,7 @@ nav.top-nav a {
   height: 335px;
   margin-bottom: 10px;
 }
-.cipCarousel .item {
+.cipCarousel .cp-item {
   -ms-touch-action: none;
   width: 100%;
   height: 335px;
@@ -81,21 +81,21 @@ nav.top-nav a {
   -ms-user-select: none;
   user-select: none;
 }
-.cipCarousel .item h3,
-.cipCarousel .item .description {
+.cipCarousel .cp-item h3,
+.cipCarousel .cp-item .description {
   display: none;
 }
-.cipCarousel .item.active {
+.cipCarousel .cp-item.active {
   z-index: 5;
   left: 0;
 }
-.cipCarousel .item.ready-right {
+.cipCarousel .cp-item.ready-right {
   z-index: 1;
 }
-.cipCarousel .item.ready-left {
+.cipCarousel .cp-item.ready-left {
   z-index: 1;
 }
-.cipCarousel .item.anim {
+.cipCarousel .cp-item.anim {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: left 0.5s ease;
   -moz-transition: left 0.5s ease;
@@ -103,7 +103,7 @@ nav.top-nav a {
   -o-transition: left 0.5s ease;
   transition: left 0.5s ease;
 }
-.cipCarousel .item .ball {
+.cipCarousel .cp-item .ball {
   -webkit-border-top-right-radius: 50%;
   -webkit-border-bottom-right-radius: 50%;
   -webkit-border-bottom-left-radius: 50%;
@@ -122,14 +122,14 @@ nav.top-nav a {
   border: 4px solid #fff;
   position: absolute;
 }
-.cipCarousel .item .ball.ball-blue {
+.cipCarousel .cp-item .ball.ball-blue {
   width: 146px;
   height: 146px;
   bottom: 35px;
   right: 142px;
   background-color: #193667;
 }
-.cipCarousel .item .ball.ball-yellow {
+.cipCarousel .cp-item .ball.ball-yellow {
   width: 124px;
   height: 124px;
   bottom: 10px;

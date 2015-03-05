@@ -17,7 +17,7 @@
 	<div class="ctn">
 		<div id="cipCarousel" class="cipCarousel card-panel">
 			<div class="wrapper">
-				<div class="item ">
+				<div class="cp-item">
 					<h3>ITEM 1</h3>
 					<div class="description">
 						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
@@ -35,7 +35,7 @@
 						<span class="label-details">incluso</span>
 					</div>
 				</div>
-				<div class="item ">
+				<div class="cp-item">
 					<h3>ITEM 2</h3>
 					<div class="description">
 						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
@@ -53,7 +53,7 @@
 						<span class="label-details">incluso</span>
 					</div>
 				</div>
-				<div class="item ">
+				<div class="cp-item">
 					<h3>ITEM 3</h3>
 					<div class="description">
 						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
@@ -71,7 +71,7 @@
 						<span class="label-details">incluso</span>
 					</div>
 				</div>
-				<div class="item ">
+				<div class="cp-item">
 					<h3>ITEM 4</h3>
 					<div class="description">
 						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
@@ -89,7 +89,7 @@
 						<span class="label-details">incluso</span>
 					</div>
 				</div>
-				<div class="item ">
+				<div class="cp-item">
 					<h3>ITEM 5</h3>
 					<div class="description">
 						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
@@ -129,9 +129,17 @@
 			query = 0;
 		}
 
+		var myfnc = function(a){
+			a = 5;
+			return a;
+		}
+
 		$('#cipCarousel').cipCarousel({
 			trasholdActivationDrag : 'short',
-			itemFirstindex : query
+			itemFirstindex : query,
+			debug : true,
+			itemClass : 'cp-item',
+			callBack : myfnc
 		});
 	</script>
 </body>

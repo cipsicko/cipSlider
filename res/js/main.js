@@ -4,6 +4,7 @@
 		var settings = $.extend({
 			el : this,
 			itemCtn : $(this).find('wrapper'),
+			itemClass : '.item',
 			item : $(this).find('.item'),
 			itemW : $(this).find('.item').width(),
 			debug : false,
@@ -18,11 +19,17 @@
 				'medium' : 3,
 				'short' : 4
 			},
+			callBack : null,
+			callbackReturn : true,
+			callBackValue : '',
 			mc : null,
 		}, options);
 
 		var s = settings;
-		s.itemfirst = $(this).find('.item').eq(s.itemFirstindex);
+		s.itemClass.indexOf('.') < 0 ? s.itemClass = '.' + s.itemClass : false;
+		s.item = $(this).find(s.itemClass);
+		s.itemW = $(this).find(s.itemClass).width();
+		s.itemfirst = $(this).find(s.itemClass).eq(s.itemFirstindex);
 
 		s.debug && debug(s.openingMsg);
 
@@ -46,7 +53,9 @@
 			s.itemfirst.addClass('active');
 			s.itemActive = s.itemfirst;
 			$.each(s.item, function(key, value){
-				$(value).attr('data-index', key);
+				var tc = s.itemClass.split('.');
+				tc.shift();
+				$(value).attr({'data-index' : key}).addClass(tc + ' ' + tc+'-'+key);
 			});
 			setLeftRight();
 		}
@@ -100,13 +109,34 @@
 			}
 		}
 
-		function bindTansitioned(el){
+		function bindTansitioned(el, isGoes){
+			this.callCallBack = false;
+			var that = this;
+			var intervall;
+
+			this.initCallBackFunction = function(){
+				if(that.callCallBack && s.callBack){
+					clearInterval(intervall);
+					var result = s.callBack;
+					$.when( result() ).done(function(data){
+
+						s.debug && debug({'callback result:' : data});
+						s.callBackValue = data;
+						
+					})
+				}else if(!s.callBack){
+					clearInterval(intervall);
+				}
+			}
+
 			el.bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(){
 				$(this).removeClass('anim');
 				$(this).siblings().removeClass('anim');
+				that.callCallBack = true;
 				setLeftRight();
 			});
 
+			isGoes ? intervall = setInterval(that.initCallBackFunction, 100) : false;
 		}
 
 		// CAROUSEL BUILDING
@@ -216,7 +246,6 @@
 			//unbind element from dragging
 			s.mc.off("dragleft dragright release",handleHammer);
 
-
 			// el.addClass('anim').removeClass('active');
 			if(direction == 'left'){
 				to > -1 ? idx = to :  idx = el.index() + 1;
@@ -232,7 +261,7 @@
 			}
 			s.debug && debug({'evType: ' : evType, ' el: ' : el, ' direction: ' : direction, ' to: ' : idx});
 
-			bindTansitioned(s.item);
+			bindTansitioned(s.item, true);
 			//bind the new element
 			build();
 
