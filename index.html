@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Slider Touch Drag</title>
+
+	<link rel="stylesheet" type="text/css" media="screen" href="lib/normalize.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="res/css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+</head>
+<body>
+	<nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper"><a class="page-title">Slider Touch Drag with Hammer.js</a></div>
+        </div>
+     </nav>
+
+	<div class="ctn">
+		<div id="cipCarousel" class="cipCarousel card-panel">
+			<div class="wrapper">
+				<div class="item ">
+					<h3>ITEM 1</h3>
+					<div class="description">
+						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
+					</div>
+					<div class="ball ball-blue">
+						<span class="label-starting">Prezzo a partire da</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">a persona</span>
+						<span class="label-details">Pasti e spettacoli inclusi</span>
+					</div>
+					<div class="ball ball-yellow">
+						<span class="label-starting">Fino a</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">sconto a persona</span>
+						<span class="label-details">incluso</span>
+					</div>
+				</div>
+				<div class="item ">
+					<h3>ITEM 2</h3>
+					<div class="description">
+						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
+					</div>
+					<div class="ball ball-blue">
+						<span class="label-starting">Prezzo a partire da</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">a persona</span>
+						<span class="label-details">Pasti e spettacoli inclusi</span>
+					</div>
+					<div class="ball ball-yellow">
+						<span class="label-starting">Fino a</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">sconto a persona</span>
+						<span class="label-details">incluso</span>
+					</div>
+				</div>
+				<div class="item ">
+					<h3>ITEM 3</h3>
+					<div class="description">
+						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
+					</div>
+					<div class="ball ball-blue">
+						<span class="label-starting">Prezzo a partire da</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">a persona</span>
+						<span class="label-details">Pasti e spettacoli inclusi</span>
+					</div>
+					<div class="ball ball-yellow">
+						<span class="label-starting">Fino a</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">sconto a persona</span>
+						<span class="label-details">incluso</span>
+					</div>
+				</div>
+				<div class="item ">
+					<h3>ITEM 4</h3>
+					<div class="description">
+						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
+					</div>
+					<div class="ball ball-blue">
+						<span class="label-starting">Prezzo a partire da</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">a persona</span>
+						<span class="label-details">Pasti e spettacoli inclusi</span>
+					</div>
+					<div class="ball ball-yellow">
+						<span class="label-starting">Fino a</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">sconto a persona</span>
+						<span class="label-details">incluso</span>
+					</div>
+				</div>
+				<div class="item ">
+					<h3>ITEM 5</h3>
+					<div class="description">
+						<p>Lorem ipsum Minim enim amet laborum mollit culpa ut anim Excepteur sit veniam dolor officia ad.</p>
+					</div>
+					<div class="ball ball-blue">
+						<span class="label-starting">Prezzo a partire da</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">a persona</span>
+						<span class="label-details">Pasti e spettacoli inclusi</span>
+					</div>
+					<div class="ball ball-yellow">
+						<span class="label-starting">Fino a</span>
+						<span class="price"><span class="label-price">€</span> 9999</span>
+						<span class="label-person">sconto a persona</span>
+						<span class="label-details">incluso</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="lib/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="lib/hammer.js"></script>
+	<script type="text/javascript" src="res/js/main.js"></script>
+	<script type="text/javascript">
+
+		function getUrlVarsValue() {
+			var vars = {};
+			var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+				vars[key] = value;
+			});
+			return vars;
+		};
+		var query = parseInt(getUrlVarsValue()['target']);
+
+		if( isNaN(query) ){
+			query = 0;
+		}
+
+		$('#cipCarousel').cipCarousel({
+			trasholdActivationDrag : 'short',
+			itemFirstindex : query
+		});
+	</script>
+</body>
+</html>

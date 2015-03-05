@@ -1,0 +1,200 @@
+@import "materialize-color.css";
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+@font-face {
+  font-family: 'robotoFont';
+  src: url('../font/Roboto-Regular.ttf') format('truetype');
+}
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
+  font-family: 'robotoFont', sans-serif;
+}
+html,
+body {
+  width: 100%;
+}
+body {
+  margin: 0;
+}
+body .ctn {
+  width: 100%;
+  max-width: 707px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+.logMsg {
+  background: #DFDFDF;
+}
+#cipDebug {
+  position: absolute;
+  width: 250px;
+  background: #aeaeae;
+  padding: 5px;
+  text-align: center;
+  bottom: 0;
+  right: 0;
+}
+nav.top-nav a {
+  text-align: center;
+  display: block;
+}
+.cipCarousel {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+.cipCarousel .wrapper {
+  overflow: hidden;
+  position: relative;
+  height: 335px;
+  margin-bottom: 10px;
+}
+.cipCarousel .item {
+  -ms-touch-action: none;
+  width: 100%;
+  height: 335px;
+  float: left;
+  position: absolute;
+  background: #eaeaea;
+  padding: 5px;
+  cursor: all-scroll;
+  background: url('../img/bg.jpg') no-repeat;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.cipCarousel .item h3,
+.cipCarousel .item .description {
+  display: none;
+}
+.cipCarousel .item.active {
+  z-index: 5;
+  left: 0;
+}
+.cipCarousel .item.ready-right {
+  z-index: 1;
+}
+.cipCarousel .item.ready-left {
+  z-index: 1;
+}
+.cipCarousel .item.anim {
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: left 0.5s ease;
+  -moz-transition: left 0.5s ease;
+  -ms-transition: left 0.5s ease;
+  -o-transition: left 0.5s ease;
+  transition: left 0.5s ease;
+}
+.cipCarousel .item .ball {
+  -webkit-border-top-right-radius: 50%;
+  -webkit-border-bottom-right-radius: 50%;
+  -webkit-border-bottom-left-radius: 50%;
+  -webkit-border-top-left-radius: 50%;
+  -moz-border-radius-topright: 50%;
+  -moz-border-radius-bottomright: 50%;
+  -moz-border-radius-bottomleft: 50%;
+  -moz-border-radius-topleft: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 4px solid #fff;
+  position: absolute;
+}
+.cipCarousel .item .ball.ball-blue {
+  width: 146px;
+  height: 146px;
+  bottom: 35px;
+  right: 142px;
+  background-color: #193667;
+}
+.cipCarousel .item .ball.ball-yellow {
+  width: 124px;
+  height: 124px;
+  bottom: 10px;
+  right: 13px;
+  background-color: #fed332;
+}
+.cipCarousel .navigation {
+  position: relative;
+  text-align: center;
+}
+.cipCarousel .navigation a + a {
+  margin-left: 5px;
+}
+.cipCarousel .navigation a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #E4E4E4;
+  -webkit-border-top-right-radius: 50%;
+  -webkit-border-bottom-right-radius: 50%;
+  -webkit-border-bottom-left-radius: 50%;
+  -webkit-border-top-left-radius: 50%;
+  -moz-border-radius-topright: 50%;
+  -moz-border-radius-bottomright: 50%;
+  -moz-border-radius-bottomleft: 50%;
+  -moz-border-radius-topleft: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transition: background 0.5s;
+  -moz-transition: background 0.5s;
+  -ms-transition: background 0.5s;
+  -o-transition: background 0.5s;
+  transition: background 0.5s;
+}
+.cipCarousel .navigation a:hover {
+  background: #aeaeae;
+}
+.cipCarousel .navigation a.active {
+  background: #aeaeae;
+}
+.cipCarousel .arrow {
+  position: absolute;
+  font-size: 10em;
+  top: 36%;
+  z-index: 10;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.cipCarousel .arrow.left {
+  left: 1%;
+}
+.cipCarousel .arrow.left.disabled {
+  color: #E4E4E4;
+}
+.cipCarousel .arrow.right {
+  right: 1%;
+}
+.cipCarousel .arrow.right.disabled {
+  color: #E4E4E4;
+}
