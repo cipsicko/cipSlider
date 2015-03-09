@@ -3,7 +3,7 @@
 		
 		var settings = $.extend({
 			el : this,
-			itemCtn : $(this).find('wrapper'),
+			itemCtn : $(this).find('.wrapper'),
 			itemClass : '.item',
 			item : $(this).find('.item'),
 			itemW : $(this).find('.item').width(),
@@ -24,12 +24,16 @@
 			callBackValue : '',
 			callBackReturnCtn : '',
 			mc : null,
+			itemsDesktop : false, //items between 1000px and 901px
+			itemsTablet : false,
+			itemsMobile : false
 		}, options);
 
 		var s = settings;
 		s.itemClass.indexOf('.') < 0 ? s.itemClass = '.' + s.itemClass : false;
 		s.item = $(this).find(s.itemClass);
 		s.itemW = $(this).find(s.itemClass).width();
+		s.itemW += parseInt(s.item.css('padding-left').replace('px', '')) + parseInt(s.item.css('padding-right').replace('px', ''));
 		s.itemfirst = $(this).find(s.itemClass).eq(s.itemFirstindex);
 
 		s.debug && debug(s.openingMsg);
@@ -41,14 +45,12 @@
 	            window.console.log( obj );
 	        }
 	    };
-
 	    function windowResize(){
 	    	$('body').append('<div id="cipDebug"><p>resize to view</p></div>');
 	    	$( window ).resize(function() {
 			 	$('#cipDebug p').html( 'width: ' + $( window ).width() + ' height: ' + $( window ).height());
 			});
 	    }
-
 		function setClass(){
 			//set to the first visible element active class
 			s.itemfirst.addClass('active');
@@ -60,7 +62,6 @@
 			});
 			setLeftRight();
 		}
-
 		function setLeftRight(){
 			//insert left class before/after active element
 			$.each(s.item, function(key, value){
@@ -71,7 +72,6 @@
 				}
 			})
 		}
-
 		function buildnavigation(){
 			var navMarkUp = $('<div>').addClass('navigation');
 			var arrowMarkup = '<a href="#1" data-direction="right" class="arrow left">&laquo;</a><a href="#1" data-direction="left" class="arrow right">&raquo;</a>';
@@ -109,7 +109,6 @@
 				s.el.find('.arrow').removeClass('disabled');
 			}
 		}
-
 		function bindTansitioned(el, isGoes){
 			this.callCallBack = false;
 			var that = this;
@@ -118,18 +117,7 @@
 			this.initCallBackFunction = function(){
 				if(that.callCallBack && s.callBack){
 					clearInterval(intervall);
-					var result = s.callBack;
-					buildLoadingAnimation( s.itemActive.find('.content') );
-					$.when( result() ).done(function(data){
-
-						s.debug && debug({'callback result:' : data});
-						s.callBackReturnCtn = s.itemActive.find('.content').html(data);
-						s.callBackValue = data;
-
-						s.itemActive.attr('data-cb-called', true);
-						s.el.find('.navigation a.active').html('');
-						
-					})
+					callBackFnc();
 				}else if(!s.callBack){
 					clearInterval(intervall);
 				}
@@ -144,7 +132,6 @@
 
 			isGoes ? intervall = setInterval(that.initCallBackFunction, 100) : false;
 		}
-
 		function buildLoadingAnimation(el){
 			var loaderMarkUp = 
 				'<div class="spinner"> \
@@ -154,7 +141,6 @@
 				</div>';
 			el.html(loaderMarkUp);			
 		}
-
 		// CAROUSEL BUILDING
 		function build(){
 
@@ -172,7 +158,6 @@
 
 			var hammertime = new Hammer(document, options).on("dragleft dragright swipeleft swiperight", function(ev){$('.loMgsg p').html(ev)});
 		}
-
 		function handlerNavigation(){
 			s.el.find('.navigation a').on('click', function(ev){
 				ev.preventDefault();
@@ -190,7 +175,6 @@
 				}
 			})
 		}
-
 		function handleHammer(ev){
 			
 			var g = ev.gesture;
@@ -201,7 +185,7 @@
 					s.itemActive.css({'left' : g.deltaX});
 					if(s.itemActive.next().length > 0){
 						this.enableToGo = true;
-						s.itemActive.next().css({'left' : g.deltaX + s.itemW + 10});
+						s.itemActive.next().css({'left' : g.deltaX + s.itemW});
 					}else{
 						this.enableToGo = false;
 						// s.debug && debug('last');
@@ -257,7 +241,6 @@
 			}
 			
 		}
-
 		function goTo(evType, el, direction, to){
 			//unbind element from dragging
 			s.mc.off("dragleft dragright release",handleHammer);
@@ -289,13 +272,42 @@
 			if( s.el.find('.arrow').length > 0 ){
 				manageArrow();
 			}
+		}
+		function callBackFnc(){
+			var result = s.callBack;
+			buildLoadingAnimation( s.itemActive.find('.content') );
+			$.when( result() ).done(function(data){
 
+				s.debug && debug({'callback result:' : data});
+				s.callBackReturnCtn = s.itemActive.find('.content').html(data);
+				s.callBackValue = data;
 
-			//call to Service
+				s.itemActive.attr('data-cb-called', true);
+				s.el.find('.navigation a.active').html('');
+				
+			})
+		}
+		function organizeItems(){
+			if(s.itemsDesktop){
+				for (var i = 0; i <= s.item.length/s.itemsDesktop -1; i++) {
+
+					for(var e = 0; e <= s.itemsDesktop -1; e++){
+						var markUp = $('<div>').addClass('item-aggregate item-aggregate-' + e );
+						markUp.append(s.item.eq(i+1).children());
+					}
+					s.item.eq(i).append(markUp);
+
+				};
+			}
+
+			s.itemsTablet
+			s.itemsMobile
 		}
 
-		setClass();
-		build();
+		$.when(organizeItems()).done(function(ev){
+			setClass();
+			build();
+		})
 
 		s.navigation && buildnavigation();
 		s.debug && windowResize();
