@@ -25,14 +25,23 @@ nav.top-nav a{text-align: center; display: block;}
 		height: 335px;
 		float: left;
 		position: absolute;
-		background: #eaeaea;
 		padding: 5px;
 		cursor: all-scroll;
-		background: url('../img/bg.jpg') no-repeat;
 
 		.item-unselected;
 
 		h3, .description{display: none;}
+
+		.content{
+			position: relative;
+			margin: 0 auto;
+			width: 200px;
+			top: 50%;
+			-webkit-transform: translateY(-50%);
+		  	-ms-transform: translateY(-50%);
+		  	-o-transform: translateY(-50%);
+		  	transform: translateY(-50%);
+		}
 
 		&.active{
 			z-index: 5;
@@ -48,26 +57,67 @@ nav.top-nav a{text-align: center; display: block;}
 	    	.item-transition(left .5s ease);
 	    }
 
-	    .ball{
-	    	.border-radiuses(50%,50%,50%,50%);
-	    	border: 4px solid #fff;
-	    	position: absolute;
-
-	    	&.ball-blue{
-	    		width: 146px;
-	    		height: 146px;
-	    		bottom: 35px;
-				right: 142px;
-				background-color: #193667;
-	    	}
-	    	&.ball-yellow{
-	    		width: 124px;
-	    		height: 124px;
-	    		bottom: 10px;
-				right: 13px;
-				background-color: #fed332;
-	    	}
+	    &.cp-item-0{
+	    	.gradient(#b2e1ff,#66b6fc)
 	    }
+	    &.cp-item-1{
+	    	.gradient(#a9db80,#96c56f)
+	    }
+	    &.cp-item-2{
+	    	.gradient(#ffaf4b,#ff920a)
+	    }
+	    &.cp-item-3{
+	    	.gradient(#fb83fa,#e93cec)
+	    }
+	    &.cp-item-4{
+	    	.gradient(#a7cfdf,#23538a)
+	    }
+	}
+
+	//SPINNER
+	.spinner {
+		margin: auto 0;
+		width: 100%;
+		text-align: center;
+	}
+
+	.spinner > div {
+		width: 5px;
+		height: 5px;
+		background-color: #333;
+		
+		border-radius: 100%;
+		display: inline-block;
+		-webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+		animation: bouncedelay 1.4s infinite ease-in-out;
+		/* Prevent first frame from flickering when animation starts */
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+	}
+
+	.spinner .bounce1 {
+		-webkit-animation-delay: -0.32s;
+		animation-delay: -0.32s;
+	}
+
+	.spinner .bounce2 {
+		-webkit-animation-delay: -0.16s;
+		animation-delay: -0.16s;
+	}
+
+	@-webkit-keyframes bouncedelay {
+		0%, 80%, 100% { -webkit-transform: scale(0.0) }
+		40% { -webkit-transform: scale(1.0) }
+	}
+
+	@keyframes bouncedelay {
+		0%, 80%, 100% { 
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+		} 40% { 
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+		}
 	}
 
 	// NAVIGATION

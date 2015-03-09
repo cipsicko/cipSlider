@@ -22,6 +22,7 @@
 			callBack : null,
 			callbackReturn : true,
 			callBackValue : '',
+			callBackReturnCtn : '',
 			mc : null,
 		}, options);
 
@@ -78,10 +79,10 @@
 			switch(s.navigation){
 				case 'nav':
 					for (var i = 0; i <= s.item.length - 1; i++) {
-						navMarkUp.append('<a href="#1" class="btn-floating waves-effect red" data-index="'+i+'">&nbsp;</a>');
+						navMarkUp.append('<a href="#1" class="btn-floating waves-effect" data-index="'+i+'">&nbsp;</a>');
 					};
 					s.el.append(navMarkUp);
-					s.el.find('.navigation a').eq(s.itemActive.index()).addClass('active').siblings().removeClass('active');
+					s.el.find('.navigation a').eq(s.itemActive.index()).addClass('active light-blue').siblings().removeClass('active');
 					break;
 				case 'arrow':
 					s.el.prepend(arrowMarkup);
@@ -92,7 +93,7 @@
 						navMarkUp.append('<a href="#1" class="btn-floating waves-effect" data-index="'+i+'>&nbsp;</a>"');
 					};
 					s.el.append(navMarkUp, arrowMarkup);
-					s.el.find('.navigation a').eq(s.itemActive.index()).addClass('active').siblings().removeClass('active');
+					s.el.find('.navigation a').eq(s.itemActive.index()).addClass('active light-blue').siblings().removeClass('active');
 					manageArrow();
 				break;
 			}
@@ -118,10 +119,15 @@
 				if(that.callCallBack && s.callBack){
 					clearInterval(intervall);
 					var result = s.callBack;
+					buildLoadingAnimation( s.itemActive.find('.content') );
 					$.when( result() ).done(function(data){
 
 						s.debug && debug({'callback result:' : data});
+						s.callBackReturnCtn = s.itemActive.find('.content').html(data);
 						s.callBackValue = data;
+
+						s.itemActive.attr('data-cb-called', true);
+						s.el.find('.navigation a.active').html('');
 						
 					})
 				}else if(!s.callBack){
@@ -137,6 +143,16 @@
 			});
 
 			isGoes ? intervall = setInterval(that.initCallBackFunction, 100) : false;
+		}
+
+		function buildLoadingAnimation(el){
+			var loaderMarkUp = 
+				'<div class="spinner"> \
+					<div class="bounce1"></div> \
+				  	<div class="bounce2"></div> \
+				  	<div class="bounce3"></div> \
+				</div>';
+			el.html(loaderMarkUp);			
 		}
 
 		// CAROUSEL BUILDING
@@ -267,7 +283,7 @@
 
 			//set class to navigation items
 			if( s.el.find('.navigation').length > 0 ){
-				s.el.find('.navigation a').eq(s.itemActive.index()).addClass('active').siblings().removeClass('active');
+				s.el.find('.navigation a').eq(s.itemActive.index()).addClass('active light-blue').siblings().removeClass('active light-blue');
 			}
 
 			if( s.el.find('.arrow').length > 0 ){
