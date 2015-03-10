@@ -289,19 +289,25 @@
 		}
 		function organizeItems(){
 			if(s.itemsDesktop){
-				for (var i = 0; i <= s.item.length/s.itemsDesktop -1; i++) {
-
-					for(var e = 0; e <= s.itemsDesktop -1; e++){
-						var markUp = $('<div>').addClass('item-aggregate item-aggregate-' + e );
-						markUp.append(s.item.eq(i+1).children());
+				var tc = s.itemClass.split('.');
+				tc.shift();
+				for(var i=0; i<= s.item.length -1; i+=s.itemsDesktop){
+					var markUp = $('<div>').addClass(tc[0]);
+					for(var e = 0; e <= s.itemsDesktop; e++){
+						markUp.append( s.item.eq(i+e).removeClass(tc[0]).addClass('inside-' + s.itemsDesktop) )
 					}
-					s.item.eq(i).append(markUp);
+					s.itemCtn.append(markUp);
+				}
 
-				};
 			}
 
-			s.itemsTablet
-			s.itemsMobile
+			s.item = s.el.find(s.itemClass);
+			s.itemW = s.el.find(s.itemClass).width();
+			s.itemW += parseInt(s.item.css('padding-left').replace('px', '')) + parseInt(s.item.css('padding-right').replace('px', ''));
+			s.itemfirst = s.el.find(s.itemClass).eq(s.itemFirstindex);
+
+			// s.itemsTablet
+			// s.itemsMobile
 		}
 
 		$.when(organizeItems()).done(function(ev){

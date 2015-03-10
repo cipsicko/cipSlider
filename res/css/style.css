@@ -170,6 +170,79 @@ nav.top-nav a {
   background: -ms-linear-gradient(top, #a7cfdf, #23538a);
   background: -o-linear-gradient(top, #a7cfdf, #23538a);
 }
+.cipCarousel .cp-item.cp-item-5 {
+  background-color: #b2e1ff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#b2e1ff), to(#66b6fc));
+  background: -webkit-linear-gradient(top, #b2e1ff, #66b6fc);
+  background: -moz-linear-gradient(top, #b2e1ff, #66b6fc);
+  background: -ms-linear-gradient(top, #b2e1ff, #66b6fc);
+  background: -o-linear-gradient(top, #b2e1ff, #66b6fc);
+}
+.cipCarousel .cp-item.cp-item-6 {
+  background-color: #a9db80;
+  background: -webkit-gradient(linear, left top, left bottom, from(#a9db80), to(#96c56f));
+  background: -webkit-linear-gradient(top, #a9db80, #96c56f);
+  background: -moz-linear-gradient(top, #a9db80, #96c56f);
+  background: -ms-linear-gradient(top, #a9db80, #96c56f);
+  background: -o-linear-gradient(top, #a9db80, #96c56f);
+}
+.cipCarousel .cp-item.cp-item-7 {
+  background-color: #ffaf4b;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffaf4b), to(#ff920a));
+  background: -webkit-linear-gradient(top, #ffaf4b, #ff920a);
+  background: -moz-linear-gradient(top, #ffaf4b, #ff920a);
+  background: -ms-linear-gradient(top, #ffaf4b, #ff920a);
+  background: -o-linear-gradient(top, #ffaf4b, #ff920a);
+}
+.cipCarousel .cp-item.cp-item-8 {
+  background-color: #fb83fa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fb83fa), to(#e93cec));
+  background: -webkit-linear-gradient(top, #fb83fa, #e93cec);
+  background: -moz-linear-gradient(top, #fb83fa, #e93cec);
+  background: -ms-linear-gradient(top, #fb83fa, #e93cec);
+  background: -o-linear-gradient(top, #fb83fa, #e93cec);
+}
+.cipCarousel .cp-item.cp-item-9 {
+  background-color: #a7cfdf;
+  background: -webkit-gradient(linear, left top, left bottom, from(#a7cfdf), to(#23538a));
+  background: -webkit-linear-gradient(top, #a7cfdf, #23538a);
+  background: -moz-linear-gradient(top, #a7cfdf, #23538a);
+  background: -ms-linear-gradient(top, #a7cfdf, #23538a);
+  background: -o-linear-gradient(top, #a7cfdf, #23538a);
+}
+.cipCarousel .cp-item.cp-item-10 {
+  background-color: #b2e1ff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#b2e1ff), to(#66b6fc));
+  background: -webkit-linear-gradient(top, #b2e1ff, #66b6fc);
+  background: -moz-linear-gradient(top, #b2e1ff, #66b6fc);
+  background: -ms-linear-gradient(top, #b2e1ff, #66b6fc);
+  background: -o-linear-gradient(top, #b2e1ff, #66b6fc);
+}
+.cipCarousel .cp-item.cp-item-11 {
+  background-color: #a9db80;
+  background: -webkit-gradient(linear, left top, left bottom, from(#a9db80), to(#96c56f));
+  background: -webkit-linear-gradient(top, #a9db80, #96c56f);
+  background: -moz-linear-gradient(top, #a9db80, #96c56f);
+  background: -ms-linear-gradient(top, #a9db80, #96c56f);
+  background: -o-linear-gradient(top, #a9db80, #96c56f);
+}
+.cipCarousel .cp-item div[class^="inside-"] {
+  display: inline-block;
+  height: 100%;
+  border: 1px solid #ee6e73;
+}
+.cipCarousel .cp-item div[class^="inside-"] + div[class^="inside-"] {
+  padding-left: 5px;
+}
+.cipCarousel .cp-item .inside-2 {
+  width: 50%;
+}
+.cipCarousel .cp-item .inside-3 {
+  width: 33.3333333337%;
+}
+.cipCarousel .cp-item .inside-4 {
+  width: 25%;
+}
 .cipCarousel .spinner {
   margin: auto 0;
   width: 100%;
